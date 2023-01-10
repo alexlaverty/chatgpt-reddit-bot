@@ -50,3 +50,20 @@ https://www.reddit.com/prefs/apps
 You can generate ChatGPT api keys for your account here :
 
 https://beta.openai.com/account/api-keys
+
+
+## Troubleshooting
+
+I get the error :
+
+```
+praw.exceptions.RedditAPIException: RATELIMIT: "Looks like you've been doing that a lot. Take a break for 9 minutes before trying again." on field 'ratelimit'
+```
+
+Fix :
+
+Set enable_sleep to True, this will sleep a random amount of minutes before attempting to comment again :
+
+```
+enable_sleep = True
+```

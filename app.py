@@ -4,7 +4,7 @@ import praw
 import os
 import time
 
-max_comments = 10
+max_comments = 1
 subreddit_name = 'askreddit'
 min_seconds = 600
 max_seconds = 900
