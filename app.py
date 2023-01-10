@@ -4,7 +4,7 @@ import praw
 import os
 import time
 
-max_comments = 5
+max_comments = 10
 subreddit_name = 'askreddit'
 min_seconds = 600
 max_seconds = 900
@@ -32,7 +32,7 @@ def get_reddit_posts():
                          user_agent=os.environ["USER_AGENT"],
                          username=os.environ["USERNAME"])
     subreddit = reddit.subreddit(subreddit_name)
-    return subreddit.hot(limit=10)
+    return subreddit.top(limit=10, time_filter='hour')
 
 
 def main():
