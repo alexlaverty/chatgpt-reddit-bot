@@ -1,6 +1,9 @@
 # chatgpt-reddit-bot
 Python ChatGPT bot that Replies to Reddit Posts, most of this script was written using ChatGPT 😂
 
+Read the comments posted by this bot here :
+<https://www.reddit.com/user/ttsvibelounge/comments/>
+
 ## What does this script do?
 
 Gets the title of the latest r/askreddit posts and uses them as prompts to send to ChatGPT :
