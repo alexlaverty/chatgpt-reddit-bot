@@ -1,5 +1,5 @@
 # chatgpt-reddit-bot
-Python ChatGPT bot that Replies to Reddit Posts
+Python ChatGPT bot that Replies to Reddit Posts, most of this script was written using ChatGPT 😂
 
 ## What does this script do?
 
