@@ -10,7 +10,7 @@ min_seconds = 600
 max_seconds = 900
 chatgpt_model = "text-davinci-003"
 # Enable sleep if you get api throttled when posting comments
-enable_sleep = False
+enable_sleep = True
 
 openai.api_key = os.environ["CHATGPT_TOKEN"]
 
@@ -39,23 +39,24 @@ def main():
     reddit_posts = get_reddit_posts()
     successful_posts = 0
 
-    while successful_posts <= max_comments:
-        for post in reddit_posts:
-            if successful_posts > max_comments:
+    for post in reddit_posts:
+        if not post.over_18:
+            reddit_post_title = post.title
+            print(f"Title: {reddit_post_title}")
+
+            chatgpt_response = get_chatgpt_answer(reddit_post_title)
+            print(f"ChatGPT Answer: {chatgpt_response}")
+            post.reply(body=chatgpt_response)
+
+            successful_posts += 1
+
+            if successful_posts >= max_comments:
                 break
-            if not post.over_18:
-                reddit_post_title = post.title
-                print(f"Title: {reddit_post_title}")
 
-                chatgpt_response = get_chatgpt_answer(reddit_post_title)
-                print(f"ChatGPT Answer: {chatgpt_response}")
-                post.reply(body=chatgpt_response)
-
-                successful_posts += 1
-
-                if enable_sleep:
-                    random_seconds = random.randint(min_seconds, max_seconds)
-                    time.sleep(random_seconds)
+            if enable_sleep:
+                random_seconds = random.randint(min_seconds, max_seconds)
+                print(f"Sleeping for {random_seconds} seconds...")
+                time.sleep(random_seconds)
 
     print(f"Max comments reached! : {successful_posts}")
 
