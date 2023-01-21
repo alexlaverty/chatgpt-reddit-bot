@@ -1,8 +1,8 @@
 name: ChatGPT to Reddit Bot
 
 on:
-  schedule:
-    - cron: '0 * * * *' # run once an hour
+  # schedule:
+  #   - cron: '0 * * * *' # run once an hour
   push:
     branches:
     - main
